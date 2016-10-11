@@ -49,7 +49,7 @@ public class BankIT {
 		assertEquals(bank.getClientByName("Carlos").getAccount().getAmount(),12.9f,floatTolerance);
 		bank.transfer(bank.getClientByName("Carlos"), bank.getClientByName("Rui"), 10f);
 		assertEquals(bank.getClientByName("Carlos").getAccount().getAmount(),2.9f,floatTolerance);
-		assertEquals(bank.getClientByName("Carlos").getAccount().getAmount(),10f,floatTolerance);
+		assertEquals(bank.getClientByName("Rui").getAccount().getAmount(),10f,floatTolerance);
 	}
 
 }
