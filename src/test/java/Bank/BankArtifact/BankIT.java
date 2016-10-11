@@ -31,6 +31,8 @@ public class BankIT {
 		// use the functions depositAccount(Client,float) & getClientByName(String) from Bank 
 		bank.depositAccount(bank.getClientByName("Carlos"),12.9f);
 		assertEquals(bank.getClientByName("Carlos").getAccount().getAmount(),12.9f,floatTolerance);
+		
+		assertNull(bank.getClientByName("Jorge"));
 	}
 	
 	@Test	
@@ -40,6 +42,8 @@ public class BankIT {
 		assertEquals(bank.getClientByName("Carlos").getAccount().getAmount(),12.9f,floatTolerance);
 		bank.withdrawClientAccount(bank.getClientByName("Carlos"),10.9f);
 		assertEquals(bank.getClientByName("Carlos").getAccount().getAmount(),2f,floatTolerance);
+		
+		assertEquals(bank.withdrawClientAccount(bank.getClientByName("Carlos"),10f),-1);
 	}
 	
 	@Test
@@ -50,6 +54,9 @@ public class BankIT {
 		bank.transfer(bank.getClientByName("Carlos"), bank.getClientByName("Rui"), 10f);
 		assertEquals(bank.getClientByName("Carlos").getAccount().getAmount(),2.9f,floatTolerance);
 		assertEquals(bank.getClientByName("Rui").getAccount().getAmount(),10f,floatTolerance);
+		
+		assertEquals(bank.transfer(bank.getClientByName("Carlos"), bank.getClientByName("Rui"), 10f),-1);
+		
 	}
 
 }
